@@ -10,12 +10,14 @@ import { toggleNoteActionCreator } from '../../store/redusers/todoReducer.js'
 function Todo(props) {
 //console.log(props.notes)
 
+
+//вытаскиваем список заметок из localStorage и встваляем в store
 useEffect(() =>{
   const row = localStorage.getItem('todos') || [];
   props.setNotes(JSON.parse(row))
 }, [])//сработатет только один раз как componentDidMount
 
-
+// срабатывает при каждом изменении input, тем самым мы делаем input управляемым компонентом
 let updateNoteText = (text) =>{
   props.setNewNoteText(text)
 }
@@ -25,9 +27,8 @@ let addNewNote = (event) =>{
   if(event.key === 'Enter'){
      props.addNewNote(newNote);   
       }
-  //localStorage.setItem('todos', JSON.stringify([...props.notes, newNote]))//добавляем в localStorage старый масив + новый элемент
 }
-
+// обновляем список в localStorage каждый раз когда добавляеться новая заметка или удаляеться или изменяется старая
 useEffect(() =>{
   localStorage.setItem('todos', JSON.stringify(props.notes))
 }, [props])

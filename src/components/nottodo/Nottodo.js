@@ -8,10 +8,11 @@ import { toggleCollorActionCreator } from '../../store/redusers/notTodoReducer.j
 
 function Nottodo(props) {
 
-useEffect(() =>{
-  
 
+// выбераем цвет 
+useEffect(() =>{
 let colors  = ["black", "red", "brown", "grey", "white"]
+// число соответствует порядковому номеру в массиве
 let coloredit = 4;
 props.notTodos.forEach(element =>{
 	if(!element.completed){
@@ -20,7 +21,7 @@ props.notTodos.forEach(element =>{
 });
 let a = colors[coloredit]
 props.toggleColor(a)
-}, [props.notTodos])//сработатет только один раз как componentDidMount
+}, [props.notTodos])
 
 const cls = ['nottodo']//массив классов
 cls.push(props.color)
