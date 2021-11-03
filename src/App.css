@@ -89,17 +89,45 @@ h6 {
 .container{
   max-width: 1220px;
   margin: 0 auto;
-  padding: 0 10px;
+  padding:  0 10px;
+}
+
+.header{
+  max-width: 1200px;
+  margin: 0 auto;
+   padding: 10px 30px;
+   background-color: #AECA9F;
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header a{
+color: #386123;
+}
+
+.header_collor_cikle{
+  width: 30px;
+  height: 30px;
+  border: 2px #000 solid;
+  border-radius: 50%;
 }
 
 
+.header_link_ui{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-
+.header_link_li{
+  margin:  0 20px 0 0;
+}
 
 .todo_title{
     font-size: 29px;
     text-align: center;
-    margin: 15px 0;
+    padding: 15px 0;
     color: #7a956b;
 }
 
@@ -133,7 +161,7 @@ h6 {
 
 
 .todo_ul_list{
-
+  padding: 0 0 10px 0;
 }
 
 .todo_li_item {
@@ -155,14 +183,6 @@ h6 {
 .todo_li_item.completed span {
   text-decoration: line-through;
 }
-
-
-
-
-
-
-
-
 
 
 .todo_checkbox {
@@ -209,10 +229,21 @@ h6 {
 
 
 
-
-
-
-
+.black{
+  background-color: #000;
+}
+.red{
+  background-color: red;
+}
+.brown{
+  background-color: #6F4128;
+}
+.grey{
+  background-color: grey;
+}
+.white{
+  background-color: white;
+}
 
 
 
