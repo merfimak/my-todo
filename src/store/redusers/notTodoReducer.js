@@ -5,10 +5,10 @@ const TOGGLE_COLOR = 'TOGGLE_COLOR'
 
 let initialState = {
      notTodos: [
-      {id: 1, title: 'drink alcohol', completed: true},
-      {id: 2, title: 'smoke cigarettes', completed: true},
-      {id: 3, title: 'get stuck in the phone', completed: true},
-      {id: 4, title: 'eat fast food', completed: true},
+      {id: 1, title: 'drink alcohol', completed: false},
+      {id: 2, title: 'smoke cigarettes', completed: false},
+      {id: 3, title: 'get stuck in the phone', completed: false},
+      {id: 4, title: 'eat fast food', completed: false},
     ],
     color: 'magenta',
     

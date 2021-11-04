@@ -13,10 +13,10 @@ function Nottodo(props) {
 useEffect(() =>{
 let colors  = ["black", "red", "brown", "grey", "white"]
 // число соответствует порядковому номеру в массиве
-let coloredit = 4;
+let coloredit = 0;
 props.notTodos.forEach(element =>{
 	if(!element.completed){
-		coloredit--;
+		coloredit++;
 	}
 });
 let a = colors[coloredit]
