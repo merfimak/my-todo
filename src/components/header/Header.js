@@ -26,7 +26,9 @@ cls.push(props.color)
           <li className="header_link_li">
             <Link to="/nottodo">Nottodo</Link>
           </li>
-          
+          <li className="header_link_li">
+            <Link to="/users">Users</Link>
+          </li>
         </ul>
 				  <div className={cls.join(' ')}></div>
 	 </div>

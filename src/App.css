@@ -246,6 +246,16 @@ color: #386123;
 }
 
 
+.pagination_pages_numbers{
+  display: flex;
+  margin: 0 0 20px 0;
+}
 
+.pagination_pages_number{
+  margin: 0 10px 0 0;
+}
 
-
+.selected_page_number{
+  margin: 0 10px 0 0;
+  background-color: yellowgreen;
+}

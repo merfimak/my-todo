@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import TodoList from './TodoList'
 import { connect } from 'react-redux';
 import { setNotesActionCreator } from '../../store/redusers/todoReducer.js'
@@ -8,81 +8,89 @@ import { deleteNoteActionCreator } from '../../store/redusers/todoReducer.js'
 import { toggleNoteActionCreator } from '../../store/redusers/todoReducer.js'
 
 function Todo(props) {
-//console.log(props.notes)
+    //console.log(props.notes)
 
 
-//вытаскиваем список заметок из localStorage и встваляем в store
-useEffect(() =>{
-  const row = localStorage.getItem('todos') || [];
-  props.setNotes(JSON.parse(row))
-}, [])//сработатет только один раз как componentDidMount
+    //вытаскиваем список заметок из localStorage и встваляем в store
+    useEffect(() => {
+        const row = localStorage.getItem('todos') || [];
+        props.setNotes(JSON.parse(row))
+    }, []) //сработатет только один раз как componentDidMount
 
-// срабатывает при каждом изменении input, тем самым мы делаем input управляемым компонентом
-let updateNoteText = (text) =>{
-  props.setNewNoteText(text)
-}
-
-let addNewNote = (event) =>{
-  let newNote = { id: Date.now(), title: event.target.value,completed: false}
-  if(event.key === 'Enter'){
-     props.addNewNote(newNote);   
-      }
-}
-// обновляем список в localStorage каждый раз когда добавляеться новая заметка или удаляеться или изменяется старая
-useEffect(() =>{
-  localStorage.setItem('todos', JSON.stringify(props.notes))
-}, [props])
-
-
-
-  return (
-       
-            <div className="Todo">
-        		 <div className="container">
-              		 <h1 className="todo_title">Todo app</h1>
-
-        		  <div className="input-field">
-                    <input type="text" className="form_input" value={props.text} onChange={event =>updateNoteText(event.target.value)}  
-                    onKeyPress={addNewNote} placeholder="Введите заметку"/>
-              </div>
-
-                  {<TodoList todos={props} />}
-        		</div>
-            </div>
-    
-  );
-  
-}
-
-let mapStateToProps = (state) =>{
-  //console.log(state)
-  return{
-    notes: state.todo.notes,
-    text: state.todo.NoteText,
-  }
-}
-
-
-let mapDispatchToProps = (dispatch) =>{
-  return{
-   setNotes: (notes) => {
-      dispatch(setNotesActionCreator(notes));
-    },
-    addNewNote: (item) => {
-      dispatch(addNewNoteActionCreator(item));
-    },
-    setNewNoteText: (NewNoteText) => {
-      dispatch(setNewNoteTextActionCreator(NewNoteText));
-    },
-    deleteNote: (id) => {
-      dispatch(deleteNoteActionCreator(id));
-    },
-    toggleNote: (id) => {
-      dispatch(toggleNoteActionCreator(id));
+    // срабатывает при каждом изменении input, тем самым мы делаем input управляемым компонентом
+    let updateNoteText = (text) => {
+        props.setNewNoteText(text)
     }
-  }
-}
 
-   const TodoContainer = connect(mapStateToProps,mapDispatchToProps)(Todo);
+    let addNewNote = (event) => {
+        let newNote = { id: Date.now(), title: event.target.value, completed: false }
+        if (event.key === 'Enter') {
+            props.addNewNote(newNote);
+        }
+    }
+    // обновляем список в localStorage каждый раз когда добавляеться новая заметка или удаляеться или изменяется старая
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(props.notes))
+    }, [props])
 
-  export default TodoContainer;
+
+
+    return (
+
+        <div className="Todo" >
+            <div className="container" >
+                <h1 className="todo_title" > Todo app </h1>
+
+                <
+                div className = "input-field" >
+                <
+                input type = "text"
+                className = "form_input"
+                value = { props.text }
+                onChange = { event => updateNoteText(event.target.value) }
+                onKeyPress = { addNewNote }
+                placeholder = "Введите заметку" / >
+                <
+        /div>
+
+            { < TodoList todos = { props }
+                />}
+            </div>
+        </div>
+
+            );
+
+    }
+
+    let mapStateToProps = (state) => {
+        //console.log(state)
+        return {
+                notes: state.todo.notes,
+            text: state.todo.NoteText,
+        }
+    }
+
+
+    let mapDispatchToProps = (dispatch) => {
+        return {
+                setNotes: (notes) => {
+                dispatch(setNotesActionCreator(notes));
+            },
+            addNewNote: (item) => {
+                dispatch(addNewNoteActionCreator(item));
+            },
+            setNewNoteText: (NewNoteText) => {
+                dispatch(setNewNoteTextActionCreator(NewNoteText));
+            },
+            deleteNote: (id) => {
+                dispatch(deleteNoteActionCreator(id));
+            },
+            toggleNote: (id) => {
+                dispatch(toggleNoteActionCreator(id));
+            }
+        }
+    }
+
+            const TodoContainer = connect(mapStateToProps, mapDispatchToProps)(Todo);
+
+            export default TodoContainer;
